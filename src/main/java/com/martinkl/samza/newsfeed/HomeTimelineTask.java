@@ -8,7 +8,7 @@ import org.apache.samza.system.IncomingMessageEnvelope;
 import org.apache.samza.task.InitableTask;
 import org.apache.samza.task.MessageCollector;
 import org.apache.samza.task.StreamTask;
-import org.apache.samza.task.TaskContext;
+import org.apache.samza.context.Context;
 import org.apache.samza.task.TaskCoordinator;
 import org.apache.samza.task.WindowableTask;
 
@@ -23,8 +23,8 @@ public class HomeTimelineTask implements StreamTask, InitableTask, WindowableTas
 
   @Override
   @SuppressWarnings("unchecked")
-  public void init(Config config, TaskContext context) throws Exception {
-    homeTimeline = (KeyValueStore<String, Map<String, Object>>) context.getStore("home-timeline");
+  public void init(Context context) throws Exception {
+    homeTimeline = (KeyValueStore<String, Map<String, Object>>) context.getTaskContext().getStore("home-timeline");
   }
 
   @Override

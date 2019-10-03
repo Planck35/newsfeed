@@ -3,3 +3,5 @@
 /.settings
 /deploy
 /target
+.idea/
+newsfeed.iml

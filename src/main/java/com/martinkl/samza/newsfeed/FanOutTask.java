@@ -10,7 +10,7 @@ import org.apache.samza.system.OutgoingMessageEnvelope;
 import org.apache.samza.task.InitableTask;
 import org.apache.samza.task.MessageCollector;
 import org.apache.samza.task.StreamTask;
-import org.apache.samza.task.TaskContext;
+import org.apache.samza.context.Context;
 import org.apache.samza.task.TaskCoordinator;
 import org.apache.samza.task.WindowableTask;
 
@@ -30,9 +30,9 @@ public class FanOutTask implements StreamTask, InitableTask, WindowableTask {
 
   @Override
   @SuppressWarnings("unchecked")
-  public void init(Config config, TaskContext context) throws Exception {
-    socialGraph = (KeyValueStore<String, String>) context.getStore("social-graph");
-    userTimeline = (KeyValueStore<String, Map<String, Object>>) context.getStore("user-timeline");
+  public void init(Context context) throws Exception {
+    socialGraph = (KeyValueStore<String, String>) context.getTaskContext().getStore("social-graph");
+    userTimeline = (KeyValueStore<String, Map<String, Object>>) context.getTaskContext().getStore("user-timeline");
   }
 
   @Override

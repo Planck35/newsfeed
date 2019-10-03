@@ -21,18 +21,61 @@
     </dependency>
     <dependency>
       <groupId>org.apache.samza</groupId>
-      <artifactId>samza-core_2.10</artifactId>
+      <artifactId>samza-azure_2.11</artifactId>
+      <version>${samza.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>org.apache.samza</groupId>
+          <artifactId>samza-core_2.12</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.samza</groupId>
+      <artifactId>samza-core_2.11</artifactId>
       <version>${samza.version}</version>
     </dependency>
     <dependency>
       <groupId>org.apache.samza</groupId>
-      <artifactId>samza-log4j</artifactId>
+      <artifactId>samza-test_2.11</artifactId>
       <version>${samza.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>org.apache.samza</groupId>
+          <artifactId>samza-core_2.12</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.apache.samza</groupId>
+          <artifactId>samza-log4j</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.apache.samza</groupId>
+          <artifactId>samza-log4j2</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.apache.samza</groupId>
+          <artifactId>samza-kv-inmemory_2.12</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.apache.samza</groupId>
+          <artifactId>samza-kv-rocksdb_2.12</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.apache.samza</groupId>
+          <artifactId>samza-kafka_2.12</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>org.apache.samza</groupId>
-      <artifactId>samza-serializers_2.10</artifactId>
+      <artifactId>samza-log4j_2.11</artifactId>
       <version>${samza.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>org.apache.samza</groupId>
+          <artifactId>samza-core_2.12</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>org.apache.samza</groupId>
@@ -43,28 +86,38 @@
     </dependency>
     <dependency>
       <groupId>org.apache.samza</groupId>
-      <artifactId>samza-yarn_2.10</artifactId>
+      <artifactId>samza-yarn_2.11</artifactId>
       <version>${samza.version}</version>
     </dependency>
     <dependency>
       <groupId>org.apache.samza</groupId>
-      <artifactId>samza-kv_2.10</artifactId>
+      <artifactId>samza-kv_2.11</artifactId>
       <version>${samza.version}</version>
     </dependency>
     <dependency>
       <groupId>org.apache.samza</groupId>
-      <artifactId>samza-kv-leveldb_2.10</artifactId>
+      <artifactId>samza-kv-rocksdb_2.11</artifactId>
       <version>${samza.version}</version>
     </dependency>
     <dependency>
       <groupId>org.apache.samza</groupId>
-      <artifactId>samza-kafka_2.10</artifactId>
+      <artifactId>samza-kafka_2.11</artifactId>
+      <version>${samza.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.samza</groupId>
+      <artifactId>samza-aws_2.11</artifactId>
       <version>${samza.version}</version>
     </dependency>
     <dependency>
       <groupId>org.apache.kafka</groupId>
-      <artifactId>kafka_2.10</artifactId>
-      <version>0.8.1.1</version>
+      <artifactId>kafka_2.11</artifactId>
+      <version>0.11.0.2</version>
+    </dependency>
+    <dependency>
+      <groupId>org.schwering</groupId>
+      <artifactId>irclib</artifactId>
+      <version>1.10</version>
     </dependency>
     <dependency>
       <groupId>org.slf4j</groupId>
@@ -76,11 +129,21 @@
       <artifactId>slf4j-log4j12</artifactId>
       <version>1.6.2</version>
     </dependency>
+    <dependency>
+      <groupId>org.codehaus.jackson</groupId>
+      <artifactId>jackson-jaxrs</artifactId>
+      <version>1.9.13</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpcore</artifactId>
+      <version>4.4.1</version>
+    </dependency>
   </dependencies>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <samza.version>0.8.0-SNAPSHOT</samza.version>
+    <samza.version>1.2.0</samza.version>
   </properties>
 
   <repositories>
