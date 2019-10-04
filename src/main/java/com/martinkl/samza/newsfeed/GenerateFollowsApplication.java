@@ -27,12 +27,12 @@ public class GenerateFollowsApplication implements TaskApplication {
                         .withDefaultStreamConfigs(KAFKA_DEFAULT_STREAM_CONFIGS);
 
         KafkaOutputDescriptor kafkaOutputDescriptor =
-                kafkaSystemDescriptor.getOutputDescriptor("newsfeed-follows", new JsonSerde<>());
+                kafkaSystemDescriptor.getOutputDescriptor("newsfeed-follows", new JsonSerde<Object>());
 
         taskApplicationDescriptor.withDefaultSystem(kafkaSystemDescriptor);
 
         taskApplicationDescriptor.withOutputStream(kafkaOutputDescriptor);
 
-        taskApplicationDescriptor.withTaskFactory((StreamTaskFactory) () -> new GenerateFollowsTask());
+        taskApplicationDescriptor.withTaskFactory((StreamTaskFactory) GenerateFollowsTask::new);
     }
 }
