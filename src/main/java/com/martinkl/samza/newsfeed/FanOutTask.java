@@ -2,7 +2,6 @@ package com.martinkl.samza.newsfeed;
 
 import java.util.Map;
 
-import org.apache.samza.config.Config;
 import org.apache.samza.storage.kv.KeyValueIterator;
 import org.apache.samza.storage.kv.KeyValueStore;
 import org.apache.samza.system.IncomingMessageEnvelope;

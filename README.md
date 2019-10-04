@@ -25,14 +25,7 @@ Start YARN, Zookeeper and Kafka through
 [Hello Samza](http://samza.incubator.apache.org/startup/hello-samza/latest/)'s
 `bin/grid start all` script.
 
-This job depends on Samza 0.8.0, which is not yet released. So you need to build it from source
-and put it in your local Maven repository, as follows:
-
-```bash
-git clone https://github.com/apache/incubator-samza samza
-cd samza
-./gradlew publishToMavenLocal
-```
+This job depends on Samza 1.2.0. So you can follow official install instruction [hello-samza](https://github.com/apache/samza-hello-samza).
 
 Then you can build and run the newsfeed jobs as follows:
 
