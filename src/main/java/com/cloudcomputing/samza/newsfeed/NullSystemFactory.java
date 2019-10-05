@@ -1,4 +1,4 @@
-package com.martinkl.samza.newsfeed;
+package com.cloudcomputing.samza.newsfeed;
 
 import org.apache.samza.config.Config;
 import org.apache.samza.metrics.MetricsRegistry;

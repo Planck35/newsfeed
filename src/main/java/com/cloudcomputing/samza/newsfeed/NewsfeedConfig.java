@@ -1,4 +1,4 @@
-package com.martinkl.samza.newsfeed;
+package com.cloudcomputing.samza.newsfeed;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

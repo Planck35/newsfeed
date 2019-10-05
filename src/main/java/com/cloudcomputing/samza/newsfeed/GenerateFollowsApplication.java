@@ -1,4 +1,4 @@
-package com.martinkl.samza.newsfeed;
+package com.cloudcomputing.samza.newsfeed;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;

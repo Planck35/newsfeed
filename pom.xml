@@ -7,7 +7,7 @@
     <maven>3.0.0</maven>
   </prerequisites>
 
-  <groupId>com.martinkl.samza</groupId>
+  <groupId>com.cloudcomputing.samza</groupId>
   <artifactId>newsfeed</artifactId>
   <version>0.0.1</version>
   <packaging>jar</packaging>
@@ -153,16 +153,6 @@
       <groupId>org.schwering</groupId>
       <artifactId>irclib</artifactId>
       <version>1.10</version>
-    </dependency>
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-api</artifactId>
-      <version>1.6.2</version>
-    </dependency>
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-log4j12</artifactId>
-      <version>1.6.2</version>
     </dependency>
     <dependency>
       <groupId>org.codehaus.jackson</groupId>
