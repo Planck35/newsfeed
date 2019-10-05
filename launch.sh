@@ -16,7 +16,7 @@ tar -xvf target/newsfeed-0.0.1-dist.tar.gz -C deploy/samza/
 # Copy the tar.gz file to hadoop file system
 #hadoop fs -copyFromLocal -f target/newsfeed-0.0.1-dist.tar.gz /
 
-yarn add file:target/newsfeed-0.0.1-dist.tar.gz
+yarn add file:"$PWD/target/newsfeed-0.0.1-dist.tar.gz"
 
 deploy/samza/bin/run-app.sh --config-factory=org.apache.samza.config.factories.PropertiesConfigFactory --config-path="file://$PWD/deploy/samza/config/newsfeed-generate-follows.properties"
 deploy/samza/bin/run-app.sh --config-factory=org.apache.samza.config.factories.PropertiesConfigFactory --config-path="file://$PWD/deploy/samza/config/newsfeed-generate-messages.properties"
