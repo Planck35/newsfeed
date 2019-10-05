@@ -8,17 +8,12 @@
   </prerequisites>
 
   <groupId>com.cloudcomputing.samza</groupId>
-  <artifactId>nycabs</artifactId>
+  <artifactId>example</artifactId>
   <version>0.0.1</version>
   <packaging>jar</packaging>
-  <name>Driver GPS location stream handling</name>
+  <name>Example code for using Samza 1.2.0 API</name>
 
   <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.12</version>
-    </dependency>
     <dependency>
       <groupId>org.apache.samza</groupId>
       <artifactId>samza-api</artifactId>
