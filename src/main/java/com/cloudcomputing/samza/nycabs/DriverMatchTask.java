@@ -21,19 +21,12 @@ import java.util.Map;
  */
 public class DriverMatchTask implements StreamTask, InitableTask, WindowableTask {
 
-    /* Define per task state here. (kv stores etc)
-       READ Samza API part in Writeup to understand how to start
-    */
-    private double MAX_MONEY = 100.0;
 
-    // key is blockId, map key is driver really id
-    private KeyValueStore<String, Map<String, Map<String, Object>>> driver_loc;
 
     @Override
     @SuppressWarnings("unchecked")
     public void init(Context context) throws Exception {
         // Initialize (maybe the kv stores?)
-        driver_loc = (KeyValueStore<String, Map<String, Map<String, Object>>>) context.getTaskContext().getStore("driver-loc");
     }
 
     @Override
