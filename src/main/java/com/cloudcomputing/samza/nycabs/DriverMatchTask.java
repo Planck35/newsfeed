@@ -21,19 +21,9 @@ import java.util.Map;
  */
 public class DriverMatchTask implements StreamTask, InitableTask, WindowableTask {
 
-    /* Define per task state here. (kv stores etc)
-       READ Samza API part in Writeup to understand how to start
-    */
-    private double MAX_MONEY = 100.0;
-
-    // key is blockId, map key is driver really id
-    private KeyValueStore<String, Map<String, Map<String, Object>>> driver_loc;
-
     @Override
     @SuppressWarnings("unchecked")
     public void init(Context context) throws Exception {
-        // Initialize (maybe the kv stores?)
-        driver_loc = (KeyValueStore<String, Map<String, Map<String, Object>>>) context.getTaskContext().getStore("driver-loc");
     }
 
     @Override
@@ -49,21 +39,7 @@ public class DriverMatchTask implements StreamTask, InitableTask, WindowableTask
     @Override
     @SuppressWarnings("unchecked")
     public void process(IncomingMessageEnvelope envelope, MessageCollector collector, TaskCoordinator coordinator) {
-        /*
-        All the messsages are partitioned by blockId, which means the messages
-        sharing the same blockId will arrive at the same task, similar to the
-        approach that MapReduce sends all the key value pairs with the same key
-        into the same reducer.
-        */
-//        String incomingStream = envelope.getSystemStreamPartition().getStream();
-//        if (incomingStream.equals(DriverMatchConfig.DRIVER_LOC_STREAM.getStream())) {
-//            processDriverLocEvent((Map<String, Object>) envelope.getMessage());
-//        } else if (incomingStream.equals(DriverMatchConfig.EVENT_STREAM.getStream())) {
-//            // Handle Event messages
-//            processNormalEvent((Map<String, Object>) envelope.getMessage(), collector);
-//        } else {
-//            throw new IllegalStateException("Unexpected input stream: " + envelope.getSystemStreamPartition());
-//        }
+
     }
 
 }
