@@ -28,12 +28,19 @@ public class DriverMatchTaskApplication implements TaskApplication {
                         .withProducerBootstrapServers(KAFKA_PRODUCER_BOOTSTRAP_SERVERS)
                         .withDefaultStreamConfigs(KAFKA_DEFAULT_STREAM_CONFIGS);
 
+
+        // Input descriptor for the events topic.
+        KafkaInputDescriptor eventsInputDescriptor =
+                kafkaSystemDescriptor.getInputDescriptor("events", new JsonSerde<>());
+
         // Output descriptor for the match-stream topic.
         KafkaOutputDescriptor kafkaOutputDescriptor =
                 kafkaSystemDescriptor.getOutputDescriptor("match-stream", new JsonSerde<>());
 
         taskApplicationDescriptor.withDefaultSystem(kafkaSystemDescriptor);
 
+        // Set the input.
+        taskApplicationDescriptor.withInputStream(eventsInputDescriptor);
 
         // Set the output.
         taskApplicationDescriptor.withOutputStream(kafkaOutputDescriptor);
