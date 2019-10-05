@@ -8,6 +8,7 @@ import java.util.TimeZone;
 import org.apache.samza.system.SystemStream;
 
 public class NewsfeedConfig {
+  public static final SystemStream INPUT_PLACEHOLDER = new SystemStream("kafka", "input-placeholder");
   public static final SystemStream FOLLOWS_STREAM = new SystemStream("kafka", "newsfeed-follows");
   public static final SystemStream MESSAGES_STREAM = new SystemStream("kafka", "newsfeed-messages");
   public static final SystemStream DELIVERIES_STREAM = new SystemStream("kafka", "newsfeed-deliveries");
