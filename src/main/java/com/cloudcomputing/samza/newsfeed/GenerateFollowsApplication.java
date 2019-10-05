@@ -15,8 +15,8 @@ import org.apache.samza.system.kafka.descriptors.KafkaSystemDescriptor;
 import org.apache.samza.task.StreamTaskFactory;
 
 public class GenerateFollowsApplication implements TaskApplication {
-    private static final List<String> KAFKA_CONSUMER_ZK_CONNECT = ImmutableList.of("172.31.2.31:2181");
-    private static final List<String> KAFKA_PRODUCER_BOOTSTRAP_SERVERS = ImmutableList.of("172.31.10.99:9092,172.31.7.54:9092,172.31.2.31:9092");
+    private static final List<String> KAFKA_CONSUMER_ZK_CONNECT = ImmutableList.of("localhost:2181");
+    private static final List<String> KAFKA_PRODUCER_BOOTSTRAP_SERVERS = ImmutableList.of("localhost:9092");
     private static final Map<String, String> KAFKA_DEFAULT_STREAM_CONFIGS = ImmutableMap.of("replication.factor", "1");
 
     @Override
