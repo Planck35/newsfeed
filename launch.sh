@@ -17,3 +17,4 @@ tar -xvf target/newsfeed-0.0.1-dist.tar.gz -C deploy/samza/
 hadoop fs -copyFromLocal -f target/newsfeed-0.0.1-dist.tar.gz /
 
 deploy/samza/bin/run-app.sh --config-factory=org.apache.samza.config.factories.PropertiesConfigFactory --config-path="file://$PWD/deploy/samza/config/newsfeed-generate-follows.properties"
+deploy/samza/bin/run-app.sh --config-factory=org.apache.samza.config.factories.PropertiesConfigFactory --config-path="file://$PWD/deploy/samza/config/newsfeed-generate-messages.properties"
