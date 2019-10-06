@@ -38,6 +38,6 @@ public class GenerateMessagesApplication implements TaskApplication {
 
         taskApplicationDescriptor.withOutputStream(kafkaOutputDescriptor);
 
-        taskApplicationDescriptor.withTaskFactory((StreamTaskFactory) () -> new GenerateFollowsTask());
+        taskApplicationDescriptor.withTaskFactory((StreamTaskFactory) () -> new GenerateMessagesTask());
     }
 }

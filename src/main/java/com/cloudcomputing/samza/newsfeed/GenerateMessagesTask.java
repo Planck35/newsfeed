@@ -23,7 +23,6 @@ public class GenerateMessagesTask implements StreamTask, WindowableTask {
 
     @Override
     public void window(MessageCollector collector, TaskCoordinator coordinator) {
-        System.out.println("Entering the message generation window." + LocalTime.now().toString());
         for (int i = 0; i < NewsfeedConfig.MESSAGES_PER_WINDOW; i++) {
             String sender = NewsfeedConfig.randomUser();
 
