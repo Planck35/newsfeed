@@ -37,7 +37,6 @@ public class FanOutTask implements StreamTask, InitableTask, WindowableTask {
   @Override
   @SuppressWarnings("unchecked")
   public void process(IncomingMessageEnvelope envelope, MessageCollector collector, TaskCoordinator coordinator) {
-    System.out.println("Hit something.");
     String incomingStream = envelope.getSystemStreamPartition().getStream();
     if (incomingStream.equals(NewsfeedConfig.FOLLOWS_STREAM.getStream())) {
       processFollowsEvent((Map<String, Object>) envelope.getMessage());
@@ -63,7 +62,6 @@ public class FanOutTask implements StreamTask, InitableTask, WindowableTask {
     if (!message.get("event").equals("postMessage")) {
       throw new IllegalStateException("Unexpected event type on messages stream: " + message.get("event"));
     }
-    System.out.println("In fan out message.");
     String sender = (String) message.get("sender");
     String time = (String) message.get("time");
 
