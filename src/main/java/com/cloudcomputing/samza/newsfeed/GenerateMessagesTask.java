@@ -1,7 +1,6 @@
 package com.cloudcomputing.samza.newsfeed;
 
 import java.util.HashMap;
-import java.time.LocalTime;
 
 import org.apache.samza.system.IncomingMessageEnvelope;
 import org.apache.samza.system.OutgoingMessageEnvelope;

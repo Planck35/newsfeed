@@ -1,7 +1,7 @@
 Samza newsfeed demo
 ===================
 
-This is an experimental sample project for [Samza](http://samza.incubator.apache.org/),
+This is an experimental sample project for [Samza 1.2.0](https://samza.apache.org/),
 demonstrating how to implement a Twitter-like real-time news feed. It uses an asymmetric
 follower model, where each user sees the messages posted by all users they are following.
 
@@ -31,7 +31,6 @@ Then you can build and run the newsfeed jobs as follows:
 
 * `mvn clean package && rm -rf deploy && mkdir -p deploy && tar xzf target/newsfeed-0.0.1-dist.tar.gz -C deploy`
 * `deploy/bin/run-job.sh --config-path=file://$PWD/deploy/config/newsfeed-fan-out.properties`
-* `deploy/bin/run-job.sh --config-path=file://$PWD/deploy/config/newsfeed-home-timeline.properties`
 * `deploy/bin/run-job.sh --config-path=file://$PWD/deploy/config/newsfeed-generate-follows.properties`
   (if necessary; automatically terminates after creating a social graph of a certain size)
 * `deploy/bin/run-job.sh --config-path=file://$PWD/deploy/config/newsfeed-generate-messages.properties`
