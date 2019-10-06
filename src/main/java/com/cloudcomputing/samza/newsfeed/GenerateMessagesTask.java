@@ -1,6 +1,7 @@
 package com.cloudcomputing.samza.newsfeed;
 
 import java.util.HashMap;
+import java.time.LocalTime;
 
 import org.apache.samza.system.IncomingMessageEnvelope;
 import org.apache.samza.system.OutgoingMessageEnvelope;
@@ -15,22 +16,23 @@ import org.apache.samza.task.WindowableTask;
  */
 public class GenerateMessagesTask implements StreamTask, WindowableTask {
 
-  @Override
-  public void process(IncomingMessageEnvelope envelope, MessageCollector collector, TaskCoordinator coordinator) {
-    // no input streams, nothing to process
-  }
-
-  @Override
-  public void window(MessageCollector collector, TaskCoordinator coordinator) {
-    for (int i = 0; i < NewsfeedConfig.MESSAGES_PER_WINDOW; i++) {
-      String sender = NewsfeedConfig.randomUser();
-
-      HashMap<String, Object> message = new HashMap<String, Object>();
-      message.put("event", "postMessage");
-      message.put("sender", sender);
-      message.put("text", "Hello world");
-      message.put("time", NewsfeedConfig.currentDateTime());
-      collector.send(new OutgoingMessageEnvelope(NewsfeedConfig.MESSAGES_STREAM, sender, null, message));
+    @Override
+    public void process(IncomingMessageEnvelope envelope, MessageCollector collector, TaskCoordinator coordinator) {
+        // no input streams, nothing to process
     }
-  }
+
+    @Override
+    public void window(MessageCollector collector, TaskCoordinator coordinator) {
+        System.out.println("Entering the message generation window." + LocalTime.now().toString());
+        for (int i = 0; i < NewsfeedConfig.MESSAGES_PER_WINDOW; i++) {
+            String sender = NewsfeedConfig.randomUser();
+
+            HashMap<String, Object> message = new HashMap<String, Object>();
+            message.put("event", "postMessage");
+            message.put("sender", sender);
+            message.put("text", "Hello world");
+            message.put("time", NewsfeedConfig.currentDateTime());
+            collector.send(new OutgoingMessageEnvelope(NewsfeedConfig.MESSAGES_STREAM, sender, null, message));
+        }
+    }
 }
