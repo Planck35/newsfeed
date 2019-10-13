@@ -12,6 +12,7 @@ import org.apache.samza.task.StreamTask;
 import org.apache.samza.context.Context;
 import org.apache.samza.task.TaskCoordinator;
 import org.apache.samza.task.WindowableTask;
+import org.codehaus.jackson.map.ObjectMapper;
 
 /**
  * Consumes the stream of follow events and the stream of messages, and joins the
@@ -81,7 +82,12 @@ public class FanOutTask implements StreamTask, InitableTask, WindowableTask {
           throw new IllegalStateException("Social graph db prefix doesn't match: " + sender + " != " + follow[0]);
         }
         message.put("recipient", follow[1]);
-        collector.send(new OutgoingMessageEnvelope(NewsfeedConfig.DELIVERIES_STREAM, follow[1], null, message));
+
+        ObjectMapper objectMapper = new ObjectMapper();
+//        System.out.println("String format"+objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(message));
+        OutgoingMessageEnvelope outgoingMessageEnvelope = new OutgoingMessageEnvelope(NewsfeedConfig.DELIVERIES_STREAM, follow[1], null, message);
+        System.out.println("Partition key: "+outgoingMessageEnvelope.getPartitionKey());
+        collector.send(outgoingMessageEnvelope);
       }
     } finally {
       followers.close();
