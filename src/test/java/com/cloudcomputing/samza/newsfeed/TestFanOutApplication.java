@@ -42,10 +42,10 @@ public class TestFanOutApplication {
         // This data should be pre-defined, and it will be stored in in-memory stream.
         List<Map<String, Object>> followData = new ArrayList<>();
         followData.add(planck_follow_majd);
-        followData.add(planck_send_msg);
+//        followData.add(planck_send_msg);
 
         List<Map<String, Object>> postData = new ArrayList<>();
-//        postData.add(planck_send_msg);
+        postData.add(planck_send_msg);
 
         InMemorySystemDescriptor isd = new InMemorySystemDescriptor("kafka");
 
