@@ -63,19 +63,20 @@ public class FanOutTask implements StreamTask, InitableTask, WindowableTask {
     if (!message.get("event").equals("postMessage")) {
       throw new IllegalStateException("Unexpected event type on messages stream: " + message.get("event"));
     }
-    System.out.println("entering post message.");
+
     String sender = (String) message.get("sender");
     String time = (String) message.get("time");
 
     userTimeline.put(sender + ":" + time + ":" + numMessages, message);
     numMessages++;
+    System.out.println("entering post message.");
     fanOut(sender, message, collector);
   }
 
   private void fanOut(String sender, Map<String, Object> message, MessageCollector collector) {
     // Colon is used as separator, and semicolon is lexicographically after colon
     KeyValueIterator<String, String> followers = socialGraph.range(sender + ":", sender + ";");
-    System.out.println("fanout");
+    System.out.println("entering fanout");
     try {
       while (followers.hasNext()) {
         String[] follow = followers.next().getKey().split(":");
