@@ -17,6 +17,7 @@ on a separate *deliveries* stream. A downstream job then groups together all the
 that need to be delivered to the same user (called a *home timeline*, again implemented using
 Samza state).
 
+We also add a small test for Samza job. The test is introduced into Samza inherently since Samza 1.0.0 version.
 
 How to run
 ----------
