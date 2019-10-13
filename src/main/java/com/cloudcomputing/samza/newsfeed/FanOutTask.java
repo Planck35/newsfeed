@@ -83,9 +83,6 @@ public class FanOutTask implements StreamTask, InitableTask, WindowableTask {
         }
         message.put("recipient", follow[1]);
 
-        System.out.println("Partition key: "+follow[1]);
-//        OutgoingMessageEnvelope outgoingMessageEnvelope = ;
-
         collector.send(new OutgoingMessageEnvelope(NewsfeedConfig.DELIVERIES_STREAM, follow[1], null, message));
       }
     } finally {

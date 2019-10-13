@@ -42,7 +42,6 @@ public class TestFanOutApplication {
         // This data should be pre-defined, and it will be stored in in-memory stream.
         List<Map<String, Object>> followData = new ArrayList<>();
         followData.add(majd_follow_planck);
-//        followData.add(planck_send_msg);
 
         List<Map<String, Object>> postData = new ArrayList<>();
         postData.add(planck_send_msg);
@@ -63,5 +62,10 @@ public class TestFanOutApplication {
                 .run(Duration.ofSeconds(5));
 
         Assert.assertEquals(1, TestRunner.consumeStream(deliverEvents, Duration.ofSeconds(10)).get(0).size());
+
+        ListIterator<Object> resultIter = TestRunner.consumeStream(deliverEvents, Duration.ofSeconds(10)).get(0).listIterator();
+        Map<String, Object> resultMap = (Map<String, Object>)resultIter.next();
+
+        Assert.assertTrue(resultMap.get("sender").toString().equals("Planck") && resultMap.get("recipient").toString().equals("Majd"));
     }
 }
