@@ -52,6 +52,7 @@ public class FanOutTask implements StreamTask, InitableTask, WindowableTask {
     if (!message.get("event").equals("follow")) {
       throw new IllegalStateException("Unexpected event type on follows stream: " + message.get("event"));
     }
+    System.out.println("entering follow event");
     String follower = (String) message.get("follower");
     String followee = (String) message.get("followee");
     String time = (String) message.get("time");
