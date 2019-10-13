@@ -75,7 +75,7 @@ public class FanOutTask implements StreamTask, InitableTask, WindowableTask {
   private void fanOut(String sender, Map<String, Object> message, MessageCollector collector) {
     // Colon is used as separator, and semicolon is lexicographically after colon
     KeyValueIterator<String, String> followers = socialGraph.range(sender + ":", sender + ";");
-
+    System.out.println("fanout");
     try {
       while (followers.hasNext()) {
         String[] follow = followers.next().getKey().split(":");
