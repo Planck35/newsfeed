@@ -63,6 +63,7 @@ public class FanOutTask implements StreamTask, InitableTask, WindowableTask {
     if (!message.get("event").equals("postMessage")) {
       throw new IllegalStateException("Unexpected event type on messages stream: " + message.get("event"));
     }
+    System.out.println("entering post message.");
     String sender = (String) message.get("sender");
     String time = (String) message.get("time");
 
