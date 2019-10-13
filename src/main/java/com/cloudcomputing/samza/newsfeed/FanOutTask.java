@@ -52,7 +52,6 @@ public class FanOutTask implements StreamTask, InitableTask, WindowableTask {
     if (!message.get("event").equals("follow")) {
       throw new IllegalStateException("Unexpected event type on follows stream: " + message.get("event"));
     }
-    System.out.println("entering follow event");
     String follower = (String) message.get("follower");
     String followee = (String) message.get("followee");
     String time = (String) message.get("time");
@@ -70,14 +69,12 @@ public class FanOutTask implements StreamTask, InitableTask, WindowableTask {
 
     userTimeline.put(sender + ":" + time + ":" + numMessages, message);
     numMessages++;
-    System.out.println("entering post message.");
     fanOut(sender, message, collector);
   }
 
   private void fanOut(String sender, Map<String, Object> message, MessageCollector collector) {
     // Colon is used as separator, and semicolon is lexicographically after colon
     KeyValueIterator<String, String> followers = socialGraph.range(sender + ":", sender + ";");
-    System.out.println("entering fanout");
     try {
       while (followers.hasNext()) {
         String[] follow = followers.next().getKey().split(":");
@@ -86,12 +83,10 @@ public class FanOutTask implements StreamTask, InitableTask, WindowableTask {
         }
         message.put("recipient", follow[1]);
 
-        ObjectMapper objectMapper = new ObjectMapper();
-//        System.out.println("String format"+objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(message));
         System.out.println("Partition key: "+follow[1]);
-//        OutgoingMessageEnvelope outgoingMessageEnvelope = new OutgoingMessageEnvelope(NewsfeedConfig.DELIVERIES_STREAM, follow[1], null, message);
+//        OutgoingMessageEnvelope outgoingMessageEnvelope = ;
 
-//        collector.send(outgoingMessageEnvelope);
+        collector.send(new OutgoingMessageEnvelope(NewsfeedConfig.DELIVERIES_STREAM, follow[1], null, message));
       }
     } finally {
       followers.close();
