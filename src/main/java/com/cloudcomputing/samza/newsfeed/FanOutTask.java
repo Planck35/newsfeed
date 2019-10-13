@@ -85,8 +85,9 @@ public class FanOutTask implements StreamTask, InitableTask, WindowableTask {
 
         ObjectMapper objectMapper = new ObjectMapper();
 //        System.out.println("String format"+objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(message));
+        System.out.println("Partition key: "+follow[1]);
         OutgoingMessageEnvelope outgoingMessageEnvelope = new OutgoingMessageEnvelope(NewsfeedConfig.DELIVERIES_STREAM, follow[1], null, message);
-        System.out.println("Partition key: "+outgoingMessageEnvelope.getPartitionKey());
+
         collector.send(outgoingMessageEnvelope);
       }
     } finally {
