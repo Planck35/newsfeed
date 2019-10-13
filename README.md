@@ -27,7 +27,10 @@ Start YARN, Zookeeper and Kafka through
 
 This job depends on Samza 1.2.0. So you can follow official install instruction [hello-samza](https://github.com/apache/samza-hello-samza).
 
-Then you can build and run the newsfeed jobs as follows:
+You need to update the `yarn.package.path` in `newsfeed-fan-out.properties`, `newsfeed-generate-follows.properties`, `newsfeed-generate-messages.properties`. Before deploy the application
+into yarn. 
+
+Then you can build and run the newsfeed jobs as follows, or just use `bash launch.sh`:
 
 * `mvn clean package && rm -rf deploy && mkdir -p deploy && tar xzf target/newsfeed-0.0.1-dist.tar.gz -C deploy`
 * `deploy/bin/run-job.sh --config-path=file://$PWD/deploy/config/newsfeed-fan-out.properties`
