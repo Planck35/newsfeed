@@ -27,11 +27,11 @@ public class TestFanOutApplication {
         confMap.put("serializers.registry.string.class", "org.apache.samza.serializers.StringSerdeFactory");
 
 
-        Map<String, Object> planck_follow_majd = new HashMap<>();
-        planck_follow_majd.put("follower", "Planck");
-        planck_follow_majd.put("followee", "Majd");
-        planck_follow_majd.put("event", "follow");
-        planck_follow_majd.put("time", NewsfeedConfig.currentDateTime());
+        Map<String, Object> majd_follow_planck = new HashMap<>();
+        majd_follow_planck.put("follower", "Majd");
+        majd_follow_planck.put("followee", "Planck");
+        majd_follow_planck.put("event", "follow");
+        majd_follow_planck.put("time", NewsfeedConfig.currentDateTime());
 
         Map<String, Object> planck_send_msg = new HashMap<>();
         planck_send_msg.put("sender", "Planck");
@@ -41,7 +41,7 @@ public class TestFanOutApplication {
 
         // This data should be pre-defined, and it will be stored in in-memory stream.
         List<Map<String, Object>> followData = new ArrayList<>();
-        followData.add(planck_follow_majd);
+        followData.add(majd_follow_planck);
 //        followData.add(planck_send_msg);
 
         List<Map<String, Object>> postData = new ArrayList<>();
