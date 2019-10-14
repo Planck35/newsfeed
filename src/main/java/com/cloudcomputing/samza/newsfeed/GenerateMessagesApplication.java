@@ -15,8 +15,10 @@ import org.apache.samza.system.kafka.descriptors.KafkaSystemDescriptor;
 import org.apache.samza.task.StreamTaskFactory;
 
 public class GenerateMessagesApplication implements TaskApplication {
-    private static final List<String> KAFKA_CONSUMER_ZK_CONNECT = ImmutableList.of("localhost:2181");
-    private static final List<String> KAFKA_PRODUCER_BOOTSTRAP_SERVERS = ImmutableList.of("localhost:9092");
+    // Replace this ip address using your own master node internal ip.
+    private static final List<String> KAFKA_CONSUMER_ZK_CONNECT = ImmutableList.of("172.31.0.72:2181");
+    // Replace this ip address using your own master & slave node internal ip.
+    private static final List<String> KAFKA_PRODUCER_BOOTSTRAP_SERVERS = ImmutableList.of("172.31.6.122:9092,172.31.6.49:9092,172.31.0.72:9092");
     private static final Map<String, String> KAFKA_DEFAULT_STREAM_CONFIGS = ImmutableMap.of("replication.factor", "1");
 
     @Override
